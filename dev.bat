@@ -1,0 +1,1 @@
+sass src/scss/prin.scss:src/prin.min.css --style="compressed" --watch

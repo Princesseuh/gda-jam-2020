@@ -1,0 +1,348 @@
+@import "./bulma.min.scss";
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+html {
+    overflow-y: hidden;
+    background-color: #5f5e79;
+    height: 100%;
+}
+
+body {
+    background-color: rgba($color: #000000, $alpha: 0.55);
+    height: 100%;
+    position: relative;
+    z-index: -5;
+
+    &.darken {
+        transition: background-color 2s;
+        background-color: rgba($color: #000000, $alpha: 0.85);
+    }
+}
+
+#app {
+    margin: auto;
+    width: 411px;
+    height: 731px;
+    background-color: white;
+    position: absolute;
+    top: -60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 14px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+    z-index: -4;
+}
+
+#main-screen {
+    display: none;
+    padding: 20px;
+    user-select: none;
+    overflow-y: auto;
+    height: 691px;
+    scrollbar-width: none;
+}
+
+#timeskip {
+    user-select: none;
+    display: none;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    #timeskip-blur {
+        transition: filter 0.5s;
+    }
+
+    div div {
+        opacity: 0;
+    }
+
+    &.timeskip-transition div {
+        transition: opacity 5s;
+    }
+}
+
+#intro-screen {
+    transition: background-color 0.3s;
+    background-color: hsl(204, 86%, 53%);
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    height: 691px;
+}
+
+.intro-part {
+    width: 100%;
+    height: 634px;
+    transition: opacity .2s;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    img {
+        width: 400px;
+        margin: 0 auto;
+    }
+}
+
+.intro-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 20px;
+
+    object {
+        margin: 0 auto;
+    }
+}
+
+.intro-screen-2 {
+    .intro-container {
+        justify-content: space-between;
+    }
+}
+
+.intro-screen-2, .intro-screen-3 {
+    opacity: 0;
+}
+
+.intro-screen-3 {
+    object {
+        padding: 12px 12px;
+        border-radius: 100%;
+        background-color: white;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.21);
+    }
+}
+
+.intro-navigation {
+    position: absolute;
+    color: white;
+    padding: 12px 20px;
+    bottom: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+    width: 100%;
+    border-top: 2px inset rgba(0, 0, 0, 0.15);
+    z-index: 1;
+
+    &.dark {
+        transition: color 0.2s, background-color 0.2s;
+        color: rgba(0, 0, 0, 0.7);
+
+        .intro-navigation-dot {
+            span {
+                transition: color 0.2s, background-color 0.2s;
+                background-color: rgba(12, 12, 12, 0.25);
+
+                &.current {
+                    transition: color 0.2s, background-color 0.2s;
+                    background-color: rgb(34, 34, 34);
+                }
+            }
+        }
+
+        .intro-next {
+            transition: color 0.2s, background-color 0.2s;
+            color: rgba(0, 0, 0, 0.7);
+
+            &:hover {
+                transition: color 0.2s, background-color 0.2s;
+                color: rgba(0, 0, 0, 1);
+            }
+        }
+    }
+
+    .intro-navigation-dot {
+        display: inline-block;
+
+        span {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 100%;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.current {
+                background-color: white;
+            }
+        }
+    }
+
+    .intro-next {
+        color: rgba(255, 255, 255, 0.80);
+        float: right;
+
+        &:hover {
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+#setup-screen {
+    opacity: 0;
+    padding: 20px;
+
+    position: relative;
+    display: none;
+    z-index: 1;
+}
+
+#setup-screen-2 {
+    display: none;
+    opacity: 0;
+}
+
+section {
+    user-select: none;
+}
+
+#phone-top-bar {
+    user-select: none;
+    display: block;
+    // background-color: rgb(2, 2, 2);
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    max-height: 40px;
+
+    span {
+        flex-basis: 33%;
+    }
+
+    #phone-time {
+        text-align: center;
+        font-weight: 600;
+    }
+
+    #phone-icons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #phone-icons, #phone-notifications {
+        object {
+            display: inline-block;
+            vertical-align: sub;
+            margin:0 2px;
+        }
+    }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  75% {
+      transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#task-list {
+    padding-bottom: 20px;
+    position: relative;
+    z-index: -1;
+}
+
+.tile.is-child {
+    animation: 0.25s ease-out 0s 1 slideInFromLeft;
+    transition: transform 0.15s;
+    user-select: none;
+
+    &:not(.checked):not([disabled=true]):hover {
+        transform: scale(1.02);
+        cursor: pointer
+    }
+
+    &[disabled=true] {
+        filter: grayscale(95%);
+        opacity: 0.9;
+    }
+
+    &:not(.checked):not([disabled=true]):hover .task-checkmark {
+            background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    &.checked .task-checkmark {
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.task-checkmark {
+    width: 54px;
+    height: 54px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: background-color 0.15s;
+}
+
+.overlay {
+    height: 691px;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+#dialogue {
+    min-width: 40%;
+    max-width: calc(100% - 40px);
+    margin: 20px;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+
+    .box {
+        position: relative;
+        font-size: 1.18em;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 85px;
+            width: 0;
+            height: 0;
+            border: 18px solid transparent;
+            border-top-color: white;
+            border-bottom: 0;
+            border-left: 0;
+            margin-left: -10px;
+            margin-bottom: -18px;
+        }
+    }
+
+    object {
+        width: 81px;
+        height: 86px;
+        padding: 8px 0px;
+        border-radius: 100%;
+        background-color: white;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.21);
+    }
+}

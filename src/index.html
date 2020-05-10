@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QOOL</title>
+
+    <link rel="stylesheet" href="prin.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.26/dayjs.min.js" integrity="sha256-vhr7lMQ7DPtWka5o4LbDYinKsFd2S9h1425NmzxeX0Q=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.26/plugin/customParseFormat.js" integrity="sha256-fBk7pPyEM4TZiv7vhTRPmJrdT4HGfZWrORmgAWQXgo4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.26/locale/fr.js" integrity="sha256-OxFcLOSbufBNmWO1Me2BZg3sIQG+yEo+Jm7E34OAf2A=" crossorigin="anonymous"></script>
+
+    <script>
+        dayjs.extend(window.dayjs_plugin_customParseFormat);
+        dayjs.locale("fr");
+    </script>
+
+    <script src="main.js"></script>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <span id="phone-top-bar">
+            <span id="phone-notifications">
+            </span>
+            <span id="phone-time">19:40</span>
+            <span id="phone-icons">
+                <object height="26px" data="assets/wifi.svg"></object>
+                <object height="26px" data="assets/battery-status.svg"></object>
+            </span>
+        </span>
+
+        <div id="clickable-zone">
+            <div id="overlay">
+                <!-- Intro Screen -->
+                <section id="intro-screen">
+                    <div class="intro-part intro-screen-1">
+                        <div class="intro-container">
+                            <h1 class="title is-2 has-text-centered has-text-white-bis ">Bienvenue sur <b>QOOL</b></h1>
+                            <object width="50%" height="185px" data="assets/calendar.svg"></object>
+                            <h2 class="subtitle has-text-centered has-text-white-ter">La meilleure application pour gérer vos habitudes.</h2>
+                        </div>
+                    </div>
+                    <div class="intro-part intro-screen-2">
+                        <div class="intro-container">
+                            <h1 class="title is-2 has-text-centered has-text-white-bis" style="margin-top: 3.76rem;">Interface simple d'accès</h1>
+                            <h2 class="subtitle has-text-centered has-text-white-ter">PLACEHOLDER</h2>
+                            <img src="assets/fake-screen.png">
+                        </div>
+                    </div>
+                    <div class="intro-part intro-screen-3">
+                        <div class="intro-container">
+                            <h1 class="title is-2 has-text-centered has-text-black-bis ">Intelligence artificielle "Maria"</h1>
+                            <object width="60%" data="assets/maria.svg"></object>
+                            <h2 class="subtitle has-text-centered has-text-black-ter">Accompagnement au quotidien, comportement adapté à votre style de vie et vos préférences.
+                                <br/><br />
+                                Merci d'utiliser <b>QOOL</b>!
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="intro-navigation">
+                        <div class="intro-navigation-dot">
+                            <span class="current" onclick="changePageIntro(1)"></span>
+                            <span onclick="changePageIntro(2)"></span>
+                            <span onclick="changePageIntro(3)"></span>
+                        </div>
+                        <span class="intro-next is-family-primary">Suivant</span>
+                    </div>
+                </section>
+
+                <!-- Intro - Setup Screen -->
+                <section id="setup-screen">
+                    <div id="setup-screen-1">
+                        <div class="field is-vertical">
+                            <div class="is-normal">
+                                <label class="label">Prénom</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control">
+                                        <input id="name-input-field" class="input is-info is-medium" type="text" placeholder="Prénom">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label class="checkbox" style="width: 100%">
+                            <input type="checkbox">
+                            Tenez-moi au courant à propos des nouvelles fonctionnalités ajoutées à <strong>QOOL</strong>.
+                        </label>
+
+                        <div class="buttons" style="margin-top: 1.4rem; width: 100%">
+                            <button id="continue-button" class="button is-info is-large" style="width: 100%" disabled onclick="writeMessage(dialogues.messages[2])">Continuer</button>
+                        </div>
+                    </div>
+                    <div id="setup-screen-2">
+                        <div class="buttons" style="margin-top: 1.4rem; width: 100%">
+                            <button id="continue-button" class="button is-info is-large" style="width: 100%" onclick="writeMessage(dialogues.messages[3])">Continuer</button>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Main Screen -->
+                <section id="main-screen">
+                    <h1 id="current-title" class="title"></h1>
+                    <h2 id="current-date" class="subtitle is-4"></h2>
+
+                    <div class="tile is-ancestor">
+                        <div id="task-list" class="tile is-parent is-vertical">
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="dialogue">
+                <div class="box"></div>
+                <object width="96px" data="assets/maria.svg"></object>
+            </div>
+
+            <div id="timeskip">
+                <div id="timeskip-blur">
+                    <div id="timeskip-date" class="title has-text-white-bis has-text-centered"></div>
+                    <div id="timeskip-time" class="title has-text-white-ter has-text-centered"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
